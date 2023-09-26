@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Static Template</title>
+    <link
+    rel="canonical"
+    href="https://getbootstrap.com/docs/5.0/examples/dashboard/"
+  />
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans">
+  <!-- Bootstrap core CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+    crossorigin="anonymous"
+  />
+  </head>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">
+            <img src="/media/static/logo-aeocb.png" width="30px" height="30px">
+            AEOCB
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                    <a class="nav-item nav-link" href="/core/templates/core/theme_list.html">Themes</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-item nav-link" href="/core/templates/core/post_list.html">Posts</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-item nav-link" href="/core/templates/core/post_image__list.html">Post Images</a>
+                    </li>
+
+                </ul>
+        </div>
+    </nav>    
+  </header>  
+
+  <body onload="PageLoadFunction()">
+      <div class="card">
+          <div class="card-body">
+      <h4 class= "mb-3" align="center">Step I: Select Date</h4>
+                    
+
+      <div class="d-flex align-items-center">
+          <div class="d-flex col-md-2 justify-content-start align-self-center">
+              <label class="col-form-label" for="post_date">Post Date: </label>
+          </div>
+          <div class="d-flex col-md-10 justify-content-center">
+            <input class="form-control col-sm-10" id="post_date" type="date" name="post_date" value="{{ object.post_date }}">
+          </div>      
+      </div>      
+      <div class="d-flex align-items-center">
+          <div class="d-flex col-md-2 justify-content-start align-self-center">
+              <label class="col-form-label" for="post_time">Post Time: </label>
+          </div>
+          <div class="d-flex col-md-10 justify-content-center">
+            <input class="form-control col-sm-10" id="post_time" type="time" name="post_time" value="{{ object.post_time }}">
+          </div>  
+      </div>        
+      <div class="d-flex align-items-center">
+          <div class="d-flex col-md-2 justify-content-start align-self-center">
+              <label class="col-form-label" for="theme">Theme: </label>
+          </div>
+          <div class="d-flex col-md-10 justify-content-center">
+            <input class="form-control col-sm-10" id="theme" type="text" name="theme" disabled>
+          </div>
+      </div>                  
+
+      <div class="d-flex align-items-center">
+          <div class="d-flex col-md-2 justify-content-start align-self-center">
+              <label class="col-form-label" for="theme_hashtag">Theme Hashtag: </label>
+          </div>
+          <div class="d-flex col-md-10 justify-content-center">
+            <textarea rows="4" class="form-control" id="theme_hashtag" name="theme_hashtag" aria-label="With textarea" disabled></textarea>
+          </div>
+      </div>
+
+      <h4 class= "mb-3" align="center">Step II: Select Verse</h4>
+
+      <div class="d-flex align-items-center">
+          <div class="d-flex col-md-2 justify-content-start align-self-center">
+              <label class="col-form-label" for="verse_french">Verse French: </label>
+          </div>
+          <div class="d-flex col-md-8 justify-content-center">
+              <textarea rows="4" id="verse_french" name="verse_french" class="form-control" aria-label="With textarea"></textarea>
+          </div>
+          <div class="d-flex col-md-2 justify-content-end align-self-center">
+              <div class="row">
+                <div class="d-flex col justify-content-center align-self-center"> 
+                    <input type="checkbox" id="add_verse_french_post" onclick="checkBoxClicked();">
+                </div>
+                <div class="col">
+                    <label class="form-check-label" for="add_verse_french_post">Add to Post</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="d-flex col justify-content-center align-self-center"> 
+                    <input type="checkbox" id="add_verse_french_image" onclick="checkBoxClicked();">
+                </div>
+                <div class="col">
+                    <label class="form-check-label" for="add_verse_french_image">Add to Image</label>
+                </div>
+              </div>              
+          </div>
+      </div>
+      <div class="d-flex align-items-center">
+          <div class="d-flex col-md-2 justify-content-start align-self-center">
+              <label class="col-form-label" for="verse_english">Verse English: </label>
+          </div>
+          <div class="d-flex col-md-8 justify-content-center">
+              <textarea rows="4" id="verse_english" name="verse_english" class="form-control" aria-label="With textarea"></textarea>
+          </div>
+          <div class="d-flex col-md-2 justify-content-end align-self-center">
+            <div class="row">
+            <div class="d-flex col justify-content-center align-self-center"> 
+                <input type="checkbox" id="add_verse_english_post" onclick="checkBoxClicked();">
+            </div>
+            <div class="col">
+                <label class="form-check-label" for="add_verse_english_post">Add to Post</label>
+            </div>
+            </div>
+            <div class="row">
+            <div class="d-flex col justify-content-center align-self-center"> 
+                <input type="checkbox" id="add_verse_english_image" onclick="checkBoxClicked();">
+            </div>
+            <div class="col">
+                <label class="form-check-label" for="add_verse_english_image">Add to Image</label>
+            </div>
+            </div>   
+          </div>
+      </div>
+      <div class="d-flex align-items-center">
+          <div class="d-flex col-md-2 justify-content-start align-self-center">
+              <label class="col-form-label" for="verse_kirundi">Verse Kirundi: </label>
+          </div>
+          <div class="d-flex col-md-8 justify-content-center">
+              <textarea rows="4" id="verse_kirundi" name="verse_kirundi" class="form-control" aria-label="With textarea"></textarea>
+          </div>
+          <div class="d-flex col-md-2 justify-content-end align-self-center">
+            <div class="row">
+            <div class="d-flex col justify-content-center align-self-center"> 
+                <input type="checkbox" id="add_verse_kirundi_post" onclick="checkBoxClicked();">
+            </div>
+            <div class="col">
+                <label class="form-check-label" for="add_verse_kirundi_post">Add to Post</label>
+            </div>
+            </div>
+            <div class="row">
+            <div class="d-flex col justify-content-center align-self-center"> 
+                <input type="checkbox" id="add_verse_kirundi_image" onclick="checkBoxClicked();">
+            </div>
+            <div class="col">
+                <label class="form-check-label" for="add_verse_kirundi_image">Add to Image</label>
+            </div>
+            </div>   
+          </div>
+      </div>
+      <div class="d-flex align-items-center">
+          <div class="d-flex col-md-2 justify-content-start align-self-center">
+              <label class="col-form-label" for="verse_hashtag">Verse Hahtag: </label>
+          </div>
+          <div class="d-flex col-md-8 justify-content-center">
+              <textarea rows="4" id="verse_hashtag" name="verse_hashtag" class="form-control" aria-label="With textarea"></textarea>
+          </div>
+          <div class="d-flex col-md-2 justify-content-end align-self-center">
+            <div class="row">
+            <div class="d-flex col justify-content-center align-self-center"> 
+                <input type="checkbox" id="add_verse_hashtag_post" onclick="checkBoxClicked()">
+            </div>
+            <div class="col">
+                <label class="form-check-label" for="add_verse_hashtag_post">Add to Post</label>
+            </div>
+            </div>
+            <div class="row">
+            <div class="d-flex col justify-content-center align-self-center"> 
+                <input type="checkbox" id="add_verse_hashtag_image" onclick="checkBoxClicked()">
+            </div>
+            <div class="col">
+                <label class="form-check-label" for="add_verse_hashtag_image">Add to Image</label>
+            </div>
+            </div>   
+          </div>
+      </div>
+                  
+      <div class="d-flex align-items-center">
+          <div class="d-flex col-md-2 justify-content-start align-self-center">
+              <label class="col-form-label" for="post_image">Post Image: </label>
+          </div>
+          <div class="d-flex col-md-10 justify-content-center">
+              <input class="form-control" id="post_image" onchange="loadFile(event)" type="file" name="post_image" >
+          </div>
+      </div>
+      <div class="card">
+          <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <h5>Text Control</h5>
+                            <div class = "row">
+                                <div class = "col-10 align-self-center">
+                                  <label for="text_move_horizontal" class="form-label">Horizontal</label>
+                                  <input type="range" value ="0" class="form-range" min="0" max="1080" id="text_move_horizontal">
+                                </div>
+                                <div class = "col-2 align-self-center">
+                                  <input type="number" id="text_move_horizontal_input">
+                                </div>
+                              </div>                            <label for="text_move_vertical" class="form-label">Vertical</label>
+                            <input type="range" value ="0" class="form-range" min="0" max="1080" id="text_move_vertical"> 
+
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="image_text_font" id="Work-Sans" checked onclick="workSansClick()">
+                            <label class="form-check-label" style="font-family: 'Work Sans';font-size: 30px;" for="Work-Sans">Work Sans</label>
+                            </div>
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="image_text_font" id="Space-Grotesk" onclick="spaceGroteskClick()">
+                            <label class="form-check-label" style="font-family: 'Space Grotesk';font-size: 30px;" for="Space-Grotesk">Space Grotesk</label>
+                            </div>
+                            <div class="form-check">
+                            <input class="form-check-input" type="radio" name="image_text_font" id="Fira-Sans" onclick="firaSansClick()">
+                            <label class="form-check-label" style="font-family: 'Fira Sans';font-size: 30px;" for="Fira-Sans">Fira Sans</label>
+                            </div>     
+
+                            <label for="text_size" class="form-label">Text Size</label>
+                            <input type="range" value ="8" class="form-range" min="8" max="300" id="text_size">
+                            <h5>Logo Control</h5>
+                            <label for="logo_move_horizontal" class="form-label">Horizontal</label>
+                            <input type="range" value ="0" class="form-range" min="0" max="1080" id="logo_move_horizontal">
+                            <label for="logo_move_vertical" class="form-label">Vertical</label>
+                            <input type="range" value ="0" class="form-range" min="0" max="1080" id="logo_move_vertical">                         
+                            <label for="logo_size" class="form-label">Size</label>
+                            <input type="range" value ="50"  class="form-range" min="0" max="100" id="logo_size">                         
+                        </div>
+
+                    </div>
+                    <div class="col">
+                    
+                        <div class="card-body">
+                        <img src="/media/static/fbpost_head.jpg" class="card-img-top">
+                        <p class="card-text" id="post_text">
+                            <p id="post_text_french"/>
+                            <p id="post_text_english"/>
+                            <p id="post_text_kirundi"/>
+                            <p id="post_text_verse_hashtag"/>
+                            <p id="post_text_theme_hashtag"/>
+                        </p>
+                        </div>
+                        <div style="position: relative; left: 0; top: 0">
+                            <p id="post_image_text" style="position: absolute;top: 0px;left: 0px;font-family: 'Work Sans';font-size: 8px;">
+                                <var id="post_image_text_french"/>
+                                <var id="post_image_text_english"/>
+                                <var id="post_image_text_kirundi"/>
+                                <var id="post_image_text_verse_hashtag"/>
+                                <var id="post_image_text_theme_hashtag"/>                            
+                            </p>
+                            
+                            <img src="/media/static/emptypost.png"  class="card-img-top" id="show_post_image">
+                            
+                            <img src="/media/static/logo-aeocb.png" id="logo" style="position: absolute;top: 0px;left: 0px;width: 50%;height: 50%">
+                        </div>
+                        <img src="/media/static/fbpost_bottom.jpg" class="card-img-top">
+                    </div>
+                </div>  
+          </div>
+      </div>
+          
+      </div   
+
+
+
+
+
+
+
+      </div>
+    </div>                     
+  </div>
+</div>                     
+</div>
+  </body>
+<script>
+    function to_image(){
+        var canvas = document.getElementById("thecanvas");
+        document.getElementById("theimage").src = canvas.toDataURL();
+        Canvas2Image.saveAsPNG(canvas);
+    }
+    var loadFile = function(event) {
+        var show_post_image = document.getElementById('show_post_image');
+        show_post_image.src = URL.createObjectURL(event.target.files[0]);
+
+    };
+    var slider_logo_horizontal = document.getElementById("logo_move_horizontal");
+    var slider_logo_vertical = document.getElementById("logo_move_vertical");
+
+    var slider_verse_horizontal = document.getElementById("text_move_horizontal");
+    var slider_verse_vertical = document.getElementById("text_move_vertical");
+    var logo = document.getElementById("logo");
+    
+    var verse_image_text = document.getElementById("post_image_text");
+
+    function PageLoadFunction(){
+        var show_post_image = document.getElementById("show_post_image");
+        slider_logo_horizontal.max = show_post_image.height;
+        slider_verse_horizontal.max = show_post_image.height;
+        slider_logo_vertical.max = show_post_image.width;
+        slider_verse_vertical.max = show_post_image.width;
+    }
+
+    
+    slider_logo_horizontal.oninput = function() {
+        logo.style.left = this.value + "px";
+    }
+    
+    slider_logo_vertical.oninput = function() {
+        logo.style.top = this.value + "px";
+    }    
+    
+    slider_verse_horizontal.oninput = function() {
+        verse_image_text.style.left = this.value + "px";
+    }
+    
+    slider_verse_vertical.oninput = function() {
+        verse_image_text.style.top = this.value + "px";
+    }      
+
+    var slider_text_size = document.getElementById("text_size");
+
+    text_size.oninput = function (){
+        post_image_text.style.fontSize = this.value + "px";
+    }
+    
+    var logo_size = document.getElementById("logo_size");
+    var logo = document.getElementById("logo");
+
+    logo_size.oninput = function (){
+        logo.style.width = this.value + "%";
+        logo.style.height = this.value + "%";
+    }
+
+    function workSansClick(){
+        post_image_text.style.fontFamily  = "Work Sans";
+    }
+    function spaceGroteskClick(){
+        post_image_text.style.fontFamily  = "Space Grotesk";
+    }
+    function firaSansClick(){
+        post_image_text.style.fontFamily  = "Fira Sans";
+    }    
+
+    add_verse_french_post = document.getElementById("add_verse_french_post");
+    add_verse_french_image = document.getElementById("add_verse_french_image");
+    post_image_text = document.getElementById("post_image_text");
+    post_text = document.getElementById("post_text");
+    verse_french = document.getElementById("verse_french");
+    
+    post_text_french = document.getElementById("post_text_french");
+    post_text_english = document.getElementById("post_text_english");
+    post_text_kirundi = document.getElementById("post_text_kirundi");
+    post_text_verse_hashtag = document.getElementById("post_text_verse_hashtag");
+    post_text_theme_hashtag = document.getElementById("post_text_theme_hashtag");
+
+
+    post_image_text_french = document.getElementById("post_image_text_french");
+    post_image_text_english = document.getElementById("post_image_text_english");
+    post_image_text_kirundi = document.getElementById("post_image_text_kirundi");
+    post_image_text_verse_hashtag = document.getElementById("post_image_text_verse_hashtag");
+    post_image_text_theme_hashtag = document.getElementById("post_image_text_theme_hashtag");
+
+    function checkBoxClicked(){
+        if (add_verse_french_post.chec1ked){
+            post_text_french.innerHTML = verse_french.value;
+        }else {
+            post_text_french.innerHTML = "";
+        }
+        
+        if(add_verse_french_image.checked){
+            post_image_text_french.innerHTML = verse_french.value;
+        } else{
+            post_image_text_french.innerHTML = "";
+        }
+        if (add_verse_english_post.checked){
+            post_text_english.innerHTML = verse_english.value;
+        }else {
+            post_text_english.innerHTML = "";
+        }
+        
+        if(add_verse_english_image.checked){
+            post_image_text_english.innerHTML = verse_english.value;
+        } else{
+            post_image_text_english.innerHTML = "";
+        }
+        if (add_verse_kirundi_post.checked){
+            post_text_kirundi.innerHTML = verse_kirundi.value;
+        }else {
+            post_text_kirundi.innerHTML = "";
+        }
+        
+        if(add_verse_kirundi_image.checked){
+            post_image_text_kirundi.innerHTML = verse_kirundi.value;
+        } else{
+            post_image_text_kirundi.innerHTML = "";
+        }
+        
+        if (add_verse_hashtag_post.checked){
+            post_text_verse_hashtag.innerHTML = verse_hashtag.value;
+        }else {
+            post_text_verse_hashtag.innerHTML = "";
+        }
+        
+        if(add_verse_hashtag_image.checked){
+            post_image_text_verse_hashtag.innerHTML = verse_hashtag.value;
+        } else{
+            post_image_text_verse_hashtag.innerHTML = "";
+        }
+        if (add_theme_hashtag_post.checked){
+            post_text_theme_hashtag.innerHTML = theme_hashtag.value;
+        }else {
+            post_text_theme_hashtag.innerHTML = "";
+        }
+        
+        if(add_theme_hashtag_image.checked){
+            post_image_text_theme_hashtag.innerHTML = theme_hashtag.value;
+        } else{
+            post_image_text_theme_hashtag.innerHTML = "";
+        }                        
+    }
+
+</script>
+</html>
